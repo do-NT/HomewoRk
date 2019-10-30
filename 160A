@@ -1,0 +1,35 @@
+#include <stdio.h>
+int main()
+{
+	int n, sum = 0, k = 0;
+	scanf("%d", &n);
+	int a[n];
+	
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", a+i);
+		sum += a[i];
+	}
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (a[j] > a[i])
+			{
+				int temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+		}
+	}
+	
+	int twin1 = 0, twin2 = 0;
+	while (twin1 < twin2 + 1)
+	{
+		twin1 += a[k];
+		twin2 = sum - twin1;
+		k++;
+	}
+	printf("%d", k);
+}
